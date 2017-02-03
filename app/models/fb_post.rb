@@ -6,6 +6,7 @@
 #     // Insert your code here
 #   }
 require 'Koala'
+require 'csv'
 class FbPost < ActiveRecord::Base
 
   def self.reactions(access_token, object_id)
@@ -13,15 +14,49 @@ class FbPost < ActiveRecord::Base
     facebook.get_object("#{object_id}?fields=type,reactions,comments")
   end
 
-  def self.posts_in_page(access_token, page_id, limit)
+
+  def self.posts_in_page(access_token, pages, limits)
     graph = Koala::Facebook::API.new(access_token)
-    interactions = graph.get_object("#{page_id}?fields=posts.limit(#{limit}){type,reactions.limit(100),comments}")
-    # interactions = posts.map do |p|
-    #   graph.get_object("#{p['id']}?fields=type,reactions.limit(100),comments")['reactions']['data']
-    #
-    # end
-    # interactions =  graph.get_object("#{posts[0]['id']},#{posts[1]['id']}?fields=type,reactions.limit(100),comments")['reactions']['data']
+    interactions=[]
+    pages.size.times do |index|
+      page_id = pages[index]
+      limit = limits[index]
+
+      raw_data = graph.get_object("#{page_id}?fields=posts.limit(#{limit}){type,reactions.limit(100),comments}")
+      raw_data['posts']['data'].each do |p|
+        post_type = p["type"]
+        post_id = p["id"]
+        unless p['reactions'].nil?
+          p['reactions']['data'].each do |r|
+            user_id = r['id']
+            interaction_type = 'reaction'
+            interaction_subtype = r['type']
+            interactions << [user_id, page_id, post_id, post_type, interaction_type, interaction_subtype]
+          end
+        end
+        unless p['comments'].nil?
+          p['comments']['data'].each do |r|
+            user_id = r['from']['id']
+            interaction_type = 'comment'
+            interactions << [user_id, page_id, post_id, post_type, interaction_type]
+          end
+        end
+
+      end
+    end
+
     interactions
-  end
 
   end
+
+  def self.to_csv(interactions, options = {})
+    column_names = %w(user_id page_id post_id post_type interaction_type interaction_subtype)
+    CSV.generate do |csv|
+      csv << column_names
+      interactions.each do |int|
+        csv << int
+      end
+    end
+  end
+
+end

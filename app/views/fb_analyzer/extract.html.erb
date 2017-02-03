@@ -1,8 +1,10 @@
 <% if @post_in_pages %>
 
   <div>
-  <% @post_in_pages.each do |r| %>
-    <%= r.inspect %>
+  <% @post_in_pages.each do |p| %>
+      <%p.each do |r| %>
+   <div> <%= r.inspect %></div>
+  <% end %>
   <% end %>
 <% end%>
 </div>

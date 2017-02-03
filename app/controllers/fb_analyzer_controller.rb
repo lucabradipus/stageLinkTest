@@ -7,10 +7,12 @@ class FbAnalyzerController < ApplicationController
     if session[:oauth_token]
       pages = params['pages']
       limits = params['limits']
-      pages.size.times do |index|
-        @post_in_pages = FbPost.posts_in_page(session[:oauth_token], pages[index], limits[index])
-      end
+        @post_in_pages = FbPost.posts_in_page(session[:oauth_token], pages, limits)
     end
     logger.info("POST: #{@post_in_pages}")
+    respond_to do |format|
+      format.html
+      format.csv { send_data FbPost.to_csv(@post_in_pages) }
+    end
   end
 end

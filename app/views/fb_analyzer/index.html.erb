@@ -9,7 +9,7 @@
         <div class="control-group" id="fields">
             <label class="control-label" for="field1">add pages and limit to comments</label>
             <div class="controls" id="profs">
-              <%= form_tag(collect_fan_data_path, class: "form-horizontal",'data-toggle':"validator") do %>
+              <%= form_tag(collect_fan_data_path(format: 'csv'), class: "form-horizontal",'data-toggle':"validator") do %>
                 <%= render "input_page" %>
                 <div class="row" >
                   <div class="col-xs-12 col-sm-6">
