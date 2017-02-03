@@ -4,10 +4,11 @@
     <title>StageLinkTest</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
   <body>
+      <%= render partial: "shared/flash_messages", flash: flash %>
     <div id="user_nav">
       <% if current_user %>
         Signed in as <strong><%= current_user.name %></strong>!
