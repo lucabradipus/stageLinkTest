@@ -1,0 +1,59 @@
+<h1>Home</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<% if @user %>
+
+  <div class="container">
+	<div class="row">
+		<input type="hidden" name="count" value="1"/>
+        <div class="control-group" id="fields">
+            <label class="control-label" for="field1">add pages and limit to comments</label>
+            <div class="controls" id="profs">
+              <%= form_tag(collect_fan_data_path, class: "form-horizontal",'data-toggle':"validator") do %>
+                <%= render "input_page" %>
+                <div class="row" >
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <div class="col-xs-offset-1 col-xs-7">
+                        <button type="submit" class="btn btn-info">submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              <% end %>
+              <br>
+            </div>
+        </div>
+	</div>
+</div>
+
+
+<% end %>
+<script type="application/javascript">
+    $(function()
+    {
+      $(document).on('click', '.btn-add', function(e)
+      {
+        e.preventDefault();
+
+        var controlForm = $('.controls form:first'),
+            currentEntry = $(this).parents('.param_row:last'),
+            newEntry = $(currentEntry.clone()).appendTo('.param_container:last');
+
+        newEntry.find('input').val('');
+        newEntry.find('.btn-add')
+            .removeClass('btn-default').addClass('btn-danger')
+            .removeClass('btn-add').addClass('btn-remove')
+            .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove   ');
+      }).on('click', '.btn-remove', function(e)
+      {
+        $(this).parents('.param_row:last').remove();
+
+        e.preventDefault();
+        return false;
+      });
+    });
+
+
+</script>

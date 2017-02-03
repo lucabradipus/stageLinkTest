@@ -1,0 +1,28 @@
+<div class="param_container">
+<div class="param_row">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                      <div class="form-group">
+                        <label for="amount" class="col-xs-3 control-label">page</label>
+                        <div class="col-xs-9">
+                          <%= text_field_tag "pages[]", nil, class: "form-control", type:"text" , required: true%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                      <div class="form-group ">
+                        <label for="base_ccy" class="col-xs-3 control-label">limit</label>
+                        <div class="col-xs-7">
+                          <%= text_field_tag "limits[]", nil, class: "form-control", type:"number", required: true  %>
+                        </div>
+                        <div class="col-xs-2">
+                          <button type="button" class="btn btn-success btn-add" >
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add more
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+</div>
+</div>
