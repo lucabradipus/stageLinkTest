@@ -20,3 +20,4 @@ class FbAnalyzerController < ApplicationController
     redirect_to :root
   end
 end
+

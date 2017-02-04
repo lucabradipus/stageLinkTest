@@ -2,8 +2,8 @@
 <% if @user %>
 
   <div class="container">
-	<div class="row">
-		<input type="hidden" name="count" value="1"/>
+	      <%= render partial: "shared/flash_messages", flash: flash %>
+    <div class="row">
         <div class="control-group" id="fields">
             <div class="controls" id="profs">
               <%= form_tag(collect_fan_data_path(format: 'csv'), class: "form-horizontal",'data-toggle':"validator") do %>
@@ -27,7 +27,6 @@
 
 
 <% end %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script type="application/javascript">
     $(function()
