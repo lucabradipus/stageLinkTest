@@ -10,17 +10,19 @@
 
   <body>
     <nav class="navbar navbar-default">
+      <div class="container">
       <div id="user_nav" >
         <div class="row">
-          <div class="col-md-offset-1 col-md-11" >
+          <div class="col-md-offset-1 col-md-11 mt-10" >
             <% if current_user %>
-              <h3>Signed in as <strong><%= current_user.name %></strong>
-                <%= link_to "Sign out", signout_path, id: "sign_out", class:"btn btn-info navbar-btn", role:"button" %></h3>
+              Signed in as <strong><%= current_user.name %></strong>
+                <%= link_to "Sign out", signout_path, id: "sign_out", class:"btn btn-info navbar-btn", role:"button" %>
             <% else %>
-              <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class:"btn btn-success navbar-btn", role:"button" %>
+     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class:"btn btn-success navbar-btn", role:"button" %>
             <% end %>
           </div>
         </div>
+      </div>
       </div>
     </nav>
     <%= yield %>

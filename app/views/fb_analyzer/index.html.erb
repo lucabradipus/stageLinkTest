@@ -1,7 +1,6 @@
 <div class="container">
-  <% if @user %>
-
     <%= render partial: "shared/flash_messages", flash: flash %>
+  <% if @user %>
     <div class="row">
       <div class="control-group" id="fields">
         <div class="controls" id="profs">
@@ -11,7 +10,7 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <div class="col-xs-offset-1 col-xs-7">
-                    <button type="submit" class="btn btn-info">export to CSV</button>
+                    <button type="submit" class="btn btn-info">Export to CSV</button>
                   </div>
                 </div>
               </div>
@@ -21,9 +20,10 @@
       </div>
 	  </div>
   <%else%>
-    <%flash[:notice]= "Please, login to Facebook to continue" %>
-  	      <%= render partial: "shared/flash_messages", flash: flash %>
+      <div class="alert alert-info" role="alert">
 
+    Please, login to Facebook to continue
+      </div>
   <% end %>
 </div>
 

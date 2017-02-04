@@ -7,7 +7,7 @@ class FbAnalyzerController < ApplicationController
     pages = params['pages']
     limits = params['limits']
     respond_to do |format|
-      format.html { send_data FbPost.posts_in_pages(session[:oauth_token], pages, limits) }
+      format.html {  @post_in_pages = FbPost.posts_in_pages(session[:oauth_token], pages, limits) }
       format.csv { send_data FbPost.to_csv(session[:oauth_token], pages, limits) }
     end
   rescue Koala::Facebook::ServerError, Koala::Facebook::ClientError => ex
