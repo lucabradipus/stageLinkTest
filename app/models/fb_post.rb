@@ -36,7 +36,8 @@ class FbPost < ActiveRecord::Base
 
   end
 
-  def self.to_csv(interactions, options = {})
+  def self.to_csv( access_token, pages, limits)
+    interactions = self.posts_in_pages(access_token, pages, limits)
     column_names = %w(user_id page_id post_id post_type interaction_type interaction_subtype)
     CSV.generate do |csv|
       csv << column_names

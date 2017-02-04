@@ -6,8 +6,8 @@
                         <label for="amount" class="col-xs-3 control-label">page</label>
                         <div class="col-xs-9 ">
 
-                          <%= text_field_tag "pages[]", nil, class: "form-control", type:"text" , pattern:"^[_A-z0-9]{1,}$", minlenght:"16", required: true%>
-                          <div class="help-block with-errors">page_id pattern is: /^[_A-z0-9]{1,}$/</div>
+                          <%= text_field_tag "pages[]", nil, class: "form-control", type:"text" , pattern:"^[_A-z0-9]{1,}$", required: true%>
+                          <div class="help-block with-errors">you can insert letters, numbers and "_"</div>
 
                         </div>
                       </div>
