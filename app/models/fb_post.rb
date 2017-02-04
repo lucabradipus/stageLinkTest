@@ -11,7 +11,7 @@ class FbPost < ActiveRecord::Base
 
 
 
-  def self.posts_in_page(access_token, pages, limits)
+  def self.posts_in_pages(access_token, pages, limits)
     graph = Koala::Facebook::API.new(access_token)
     interactions=[]
     pages.size.times do |index|
@@ -21,7 +21,7 @@ class FbPost < ActiveRecord::Base
         post_type = p["type"]
         post_id = p['id']
         unless p['reactions'].nil?
-          interactions = p['reactions']['data'].map do |r|
+          interactions += p['reactions']['data'].map do |r|
             [r['id'], page_id, post_id, post_type, 'reaction', r['type']]
           end
         end

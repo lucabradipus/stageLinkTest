@@ -7,7 +7,7 @@ class FbAnalyzerController < ApplicationController
     if session[:oauth_token]
       pages = params['pages']
       limits = params['limits']
-      @post_in_pages = FbPost.posts_in_page(session[:oauth_token], pages, limits)
+      @post_in_pages = FbPost.posts_in_pages(session[:oauth_token], pages, limits)
 
     end
     logger.info("POST: #{@post_in_pages}")
