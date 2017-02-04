@@ -14,6 +14,7 @@ class FbPost < ActiveRecord::Base
   def self.posts_in_pages(access_token, pages, limits)
     graph = Koala::Facebook::API.new(access_token)
     interactions=[]
+    #TODO something better than this "number.times"
     pages.size.times do |index|
       page_id = pages[index]
       raw_data = graph.get_object("#{page_id}?fields=posts.limit(#{limits[index]}){type,reactions.limit(100),comments.limit(100)}")

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:oauth_token] = nil
+    reset_session
     redirect_to root_url
   end
 
