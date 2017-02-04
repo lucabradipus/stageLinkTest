@@ -6,7 +6,7 @@
     <div class="row">
         <div class="control-group" id="fields">
             <div class="controls" id="profs">
-              <%= form_tag(collect_fan_data_path(format: 'csv'), class: "form-horizontal",'data-toggle':"validator") do %>
+              <%= form_tag(collect_fan_data_path(format: 'csv'), id:"fan_collector", class: "form-horizontal",'data-toggle':"validator") do %>
                 <%= render "input_page" %>
                 <div class="row" >
                   <div class="col-xs-12 col-sm-6">
@@ -27,10 +27,11 @@
 
 
 <% end %>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
 <script type="application/javascript">
     $(function()
     {
+
       $(document).on('click', '.btn-add', function(e)
       {
         e.preventDefault();
@@ -44,11 +45,14 @@
             .removeClass('btn-default').addClass('btn-danger')
             .removeClass('btn-add').addClass('btn-remove')
             .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove   ');
+        $('#fan_collector').validator('update');
+
       }).on('click', '.btn-remove', function(e)
       {
         $(this).parents('.param_row:last').remove();
 
         e.preventDefault();
+        $('#fan_collector').validator('update');
         return false;
       });
     });

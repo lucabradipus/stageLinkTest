@@ -2,18 +2,22 @@
 <div class="param_row">
                   <div class="row">
                     <div class="col-xs-12 col-sm-4">
-                      <div class="form-group">
+                      <div class="form-group has-feedback">
                         <label for="amount" class="col-xs-3 control-label">page</label>
-                        <div class="col-xs-9">
-                          <%= text_field_tag "pages[]", nil, class: "form-control", type:"text" , required: true%>
+                        <div class="col-xs-9 ">
+
+                          <%= text_field_tag "pages[]", nil, class: "form-control", type:"text" , pattern:"^[_A-z0-9]{1,}$", minlenght:"16", required: true%>
+                          <div class="help-block with-errors">page_id pattern is: /^[_A-z0-9]{1,}$/</div>
+
                         </div>
                       </div>
                     </div>
-                    <div class="col-xs-12 col-sm-4">
+                    <div class="col-xs-12 col-sm-4 has-feedback">
                       <div class="form-group ">
                         <label for="base_ccy" class="col-xs-3 control-label">limit</label>
                         <div class="col-xs-7">
-                          <%= text_field_tag "limits[]", nil, class: "form-control", type:"number", required: true  %>
+                          <%= text_field_tag "limits[]", nil, class: "form-control", type:"number", max:"100", required: true %>
+                          <div class="help-block with-errors">max is 100</div>
                         </div>
                         <div class="col-xs-2">
                           <button type="button" class="btn btn-success btn-add" >
