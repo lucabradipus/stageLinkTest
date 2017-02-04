@@ -11,7 +11,7 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <div class="col-xs-offset-1 col-xs-7">
-                    <button type="submit" class="btn btn-info">submit</button>
+                    <button type="submit" class="btn btn-info">export to CSV</button>
                   </div>
                 </div>
               </div>
@@ -28,34 +28,3 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
-<script type="application/javascript">
-    $(function()
-    {
-
-      $(document).on('click', '.btn-add', function(e)
-      {
-        e.preventDefault();
-
-        var controlForm = $('.controls form:first'),
-            currentEntry = $(this).parents('.param_row:last'),
-            newEntry = $(currentEntry.clone()).appendTo('.param_container:last');
-
-        newEntry.find('input').val('');
-        newEntry.find('.btn-add')
-            .removeClass('btn-default').addClass('btn-danger')
-            .removeClass('btn-add').addClass('btn-remove')
-            .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove   ');
-        $('#fan_collector').validator('update');
-
-      }).on('click', '.btn-remove', function(e)
-      {
-        $(this).parents('.param_row:last').remove();
-
-        e.preventDefault();
-        $('#fan_collector').validator('update');
-        return false;
-      });
-    });
-
-
-</script>
