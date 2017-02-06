@@ -9,7 +9,7 @@ $(document).on('click', '.btn-add', function(e)
   newEntry.find('.btn-add')
       .removeClass('btn-default').addClass('btn-danger')
       .removeClass('btn-add').addClass('btn-remove')
-      .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove   ');
+      .html('<span aria-hidden="true"></span> Remove   ');
   $('#fan_collector').validator('update');
 
 }).on('click', '.btn-remove', function(e)

@@ -30,14 +30,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
+#used to access some bootstrap 4 tools
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
-#stagelink gems
-#to access Garph API
-gem 'omniauth-facebook'
-gem "koala"
+gem 'omniauth-facebook', '~> 4.0.0'
+gem "koala", '~> 2.4.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -49,12 +48,9 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'webmock'
-  # gem 'factory_girl_rails'
-  # gem 'rails-controller-testing'
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'simplecov', :require => false
   gem 'rails-controller-testing'
 end
