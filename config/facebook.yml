@@ -1,4 +1,7 @@
 #TODO add to git ignore
+production:
+  app_id: "260038024427281"
+  secret: "6d73ee97c4f6e5d31be09307de820a13"
 development:
   app_id: "260038024427281"
   secret: "6d73ee97c4f6e5d31be09307de820a13"
