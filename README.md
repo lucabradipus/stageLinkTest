@@ -28,7 +28,17 @@ The secret key for the facebook app I created to login in facebook and perform t
 * no more than 100 reactions and comments are downloaded for each post. During my test incrementing this number caused an error 
 * The Javascript method that add input fields to the form should be improved. 
 
+##Usage
 
+Insert in the page id field a numeric identifier (e.g. 249403588440524) or the page name (e.g. DieLochis)
+
+In the limit field you must insert an integer between 1 and 100 
+
+Using the "add more" button you can ask information on more pages, that are added at the csv that is produced
+
+As the data are retrieved per page ( that is a query for each page) the number of pages requested has not 
+impact on the amount retrieved by each call to the Facebook Graph API
+  
 ## Heroku deployment
 You can find an instance of this application running on 
 [https://stl-test.herokuapp.com/](https://stl-test.herokuapp.com/)
