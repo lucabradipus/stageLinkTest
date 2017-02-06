@@ -4,7 +4,7 @@ class PageQuery
   include ActiveModel::Validations
   attr_accessor :page_id, :limit, :access_token
 
-  #TODO INTERACTION_LIMIT,the limit to comments and reactions, must be verified
+  #TODO INTERACTION_LIMIT -the limit to comments and reactions- must be verified
   INTERACTION_LIMIT = 100
   validates_presence_of :access_token, :message => "Please, login to Facebook"
   validates_presence_of :page_id, :message => "Please, insert a Facebook page ID!"
@@ -39,17 +39,6 @@ class PageQuery
         end
       end
     interactions
-  end
-
-  def self.to_csv( access_token, pages)
-    interactions = self.posts_in_pages(access_token, pages)
-    column_names = %w(user_id self.page_id post_id post_type interaction_type interaction_subtype)
-    CSV.generate do |csv|
-      csv << column_names
-      interactions.each do |int|
-        csv << int
-      end
-    end
   end
 
 end
