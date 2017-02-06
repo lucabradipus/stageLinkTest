@@ -1,4 +1,4 @@
-require 'Koala'
+require 'koala'
 require 'csv'
 class PageQuery
   include ActiveModel::Validations
