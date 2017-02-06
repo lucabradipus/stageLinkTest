@@ -27,7 +27,8 @@ The secret key for the facebook app I created to login in facebook and perform t
 * feedback on errors is quite naive
 * no more than 100 reactions and comments are downloaded for each post. During my test incrementing this number caused an error 
 * The Javascript method that add input fields to the form should be improved. 
-
+* OmniAuth throws a warning each time is uploaded. This is a [known issue](https://github.com/omniauth/omniauth/issues/872) but seems not to have impact on 
+the application
 ##Usage
 
 Insert in the page id field a numeric identifier (e.g. 249403588440524) or the page name (e.g. DieLochis)
