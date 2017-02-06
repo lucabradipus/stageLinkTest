@@ -1,15 +1,17 @@
 <div class="container">
     <%= render partial: "shared/flash_messages", flash: flash %>
-  <% if @user %>
-    <div class="row">
+</div>
+
+<div class="container">
+ <% if @user %>
       <div class="control-group" id="fields">
         <div class="controls" id="profs">
           <%= form_tag(collect_fan_data_path(format: 'csv'), id:"fan_collector", class: "form-horizontal",'data-toggle':"validator") do %>
             <%= render "input_page" %>
             <div class="row" >
-              <div class="col-xs-12 col-sm-6">
+              <div class="col">
                 <div class="form-group">
-                  <div class="col-xs-offset-1 col-xs-7">
+                  <div class="col-sm-offset-1 col-sm-7">
                     <button type="submit" class="btn btn-info">Export to CSV</button>
                   </div>
                 </div>
@@ -18,7 +20,6 @@
           <% end %>
         </div>
       </div>
-	  </div>
   <%else%>
       <div class="alert alert-info" role="alert">
 
