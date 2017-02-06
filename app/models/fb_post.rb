@@ -1,4 +1,4 @@
-require 'Koala'
+require 'koala'
 require 'csv'
 class FbPost
   include ActiveModel::Validations
@@ -20,7 +20,6 @@ class FbPost
     graph = Koala::Facebook::API.new(self.access_token)
 
     interactions=[]
-    #TODO the limit to post and reaction must be verified
     self.pages.each do |page|
       interactions += page.reactions_in_page(graph)
     end
