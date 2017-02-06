@@ -4,11 +4,15 @@ class FbAnalyzerController < ApplicationController
   end
 
   def extract
-    pages = params['pages']
-    limits = params['limits']
+    fb_post = FbPost.new(params['pages'], session[:oauth_token])
     respond_to do |format|
-      format.html {  @post_in_pages = FbPost.posts_in_pages(session[:oauth_token], pages) }
-      format.csv { send_data FbPost.to_csv(session[:oauth_token], pages) }
+      if fb_post.valid?
+        format.html { @post_in_pages = fb_post.get_interactions }
+        format.csv { send_data fb_post.to_csv }
+      else
+        flash[:error] = fb_post.errors.full_messages.to_sentence
+        redirect_to :root
+      end
     end
   rescue Koala::Facebook::ServerError, Koala::Facebook::ClientError => ex
     flash[:error] = ex.message

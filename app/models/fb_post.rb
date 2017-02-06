@@ -1,48 +1,37 @@
-# FB.api(
-#   '/249403588440524_1336300486417490',
-#   'GET',
-#   {"fields":"type,reactions,comments"},
-#   function(response) {
-#     // Insert your code here
-#   }
 require 'Koala'
 require 'csv'
-class FbPost < ActiveRecord::Base
+class FbPost
+  include ActiveModel::Validations
+  attr_accessor :pages, :access_token
 
+  COLUMNS_NAMES = %w(user_id page_id post_id post_type interaction_type interaction_subtype)
+  validates_presence_of :access_token, :message => "Please, login to Facebook"
+  validates_presence_of :pages
 
+  def initialize(pages,access_token)
+    self.pages = []
+    pages.each do |page|
+      self.pages << PageQuery.new(page['id'],page['limit'].to_i,access_token)
+    end
+    self.access_token = access_token
+  end
 
-  def self.posts_in_pages(access_token, pages)
-    graph = Koala::Facebook::API.new(access_token)
+  def get_interactions
+    graph = Koala::Facebook::API.new(self.access_token)
+
     interactions=[]
     #TODO the limit to post and reaction must be verified
-    # "pages"=>[{"page"=>"107840939393927", "limit"=>"11"}, {"page"=>"249403588440524", "limit"=>"10"}]}
-    pages.each do |page|
-      page_id = page['id']
-      raw_data = graph.get_object("#{page_id}?fields=posts.limit(#{page['limit']}){type,reactions.limit(100),comments.limit(100)}")
-      raw_data['posts']['data'].each do |p|
-        post_type = p["type"]
-        post_id = p['id']
-        unless p['reactions'].nil?
-          interactions += p['reactions']['data'].map do |r|
-            [r['id'], page_id, post_id, post_type, 'reaction', r['type']]
-          end
-        end
-        unless p['comments'].nil?
-          interactions += p['comments']['data'].map do |r|
-            [r['from']['id'], page_id, post_id, post_type, 'comment']
-          end
-        end
-      end
+    self.pages.each do |page|
+      interactions += page.reactions_in_page(graph)
     end
     interactions
 
   end
 
-  def self.to_csv( access_token, pages)
-    interactions = self.posts_in_pages(access_token, pages)
-    column_names = %w(user_id page_id post_id post_type interaction_type interaction_subtype)
+  def to_csv
+    interactions = self.get_interactions
     CSV.generate do |csv|
-      csv << column_names
+      csv << COLUMNS_NAMES
       interactions.each do |int|
         csv << int
       end
