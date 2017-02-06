@@ -41,6 +41,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'webmock'
