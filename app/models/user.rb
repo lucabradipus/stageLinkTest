@@ -1,4 +1,4 @@
-require 'Koala'
+require 'koala'
 class User
 
   def self.koala(access_token)
