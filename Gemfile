@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth-facebook'
 gem "koala"
 # to set up UI
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
