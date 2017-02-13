@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'font-awesome-sass', '~> 4.7.0'
 
 #used to access some bootstrap 4 tools
 source 'https://rails-assets.org' do
@@ -42,8 +43,6 @@ gem "koala", '~> 2.4.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
@@ -53,6 +52,12 @@ end
 group :test do
   gem 'simplecov', :require => false
   gem 'rails-controller-testing'
+  gem "capybara"
+  gem 'poltergeist'
+  gem "selenium-webdriver"
+  gem 'launchy'
+  gem 'cucumber-rails', :require => false
+
 end
 
 group :development do
