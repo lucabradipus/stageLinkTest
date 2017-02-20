@@ -1,5 +1,7 @@
 
 $(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+
   $(document).on('click', '.btn-add', function (e) {
     e.preventDefault();
 
@@ -16,6 +18,7 @@ $(function () {
         .show();
 
     $('#fan_collector').validator('update');
+    $('[data-toggle="tooltip"]').tooltip();
 
   }).on('click', '.btn-remove', function (e) {
     var newLastRow$ = $(this).parents('.param_row:last').prev();

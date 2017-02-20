@@ -1,18 +1,22 @@
-<div class="param_container">
+<div class="param_container mt-5">
   <div class="param_row">
     <div class="row">
       <div class="col-5">
         <div class="form-group form-inline has-feedback">
           <label class="control-label col-3">page id:</label>
-          <%= text_field_tag "pages[][id]", nil, class: "form-control col-9", type:"text" , pattern:"^[_A-z0-9]{1,}$", required: true%>
-          <div class="help-block with-errors offset-1 ">You can insert letters, numbers and the "_" (underscore) character.</div>
+          <%= text_field_tag "pages[][id]", nil, class: "form-control col-8", type:"text" , pattern:"^[_A-z0-9]{1,}$", required: true%>
+          <a  class="pl-2 col-1" data-toggle="tooltip" data-placement="top" title="You can insert letters, numbers and the '_' (underscore) character">
+<%= icon('question-circle-o') %></a>
+
         </div>
       </div>
       <div class="col-5 ">
         <div class="form-group form-inline has-feedback">
          <label class="control-label col-3">limit:</label>
-          <%= text_field_tag "pages[][limit]", nil, class: "form-control col-9", type:"number", min:"1", max:"100", required: true %>
-          <div class="help-block with-errors offset-2">Must be between 1 and 100.</div>
+          <%= text_field_tag "pages[][limit]", nil, class: "form-control col-8", type:"number", min:"1", max:"100", required: true %>
+
+          <a  class="pl-2 col-1" data-toggle="tooltip" data-placement="top" title="Must be between 1 and 100">
+<%= icon('question-circle-o') %></a>
         </div>
       </div>
       <div class="col-2 ">
@@ -28,3 +32,4 @@
     </div>
   </div>
 </div>
+
