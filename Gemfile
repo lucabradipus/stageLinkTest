@@ -52,12 +52,6 @@ end
 group :test do
   gem 'simplecov', :require => false
   gem 'rails-controller-testing'
-  gem "capybara"
-  gem 'poltergeist'
-  gem "selenium-webdriver"
-  gem 'launchy'
-  gem 'cucumber-rails', :require => false
-
 end
 
 group :development do
