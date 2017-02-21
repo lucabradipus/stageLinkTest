@@ -4,8 +4,8 @@
       <div class="col-5">
         <div class="form-group form-inline has-feedback">
           <label class="control-label col-3">page id:</label>
-          <%= text_field_tag "pages[][id]", nil, class: "form-control col-8", type:"text" , pattern:"^[_A-z0-9]{1,}$", required: true%>
-          <a  class="pl-2 col-1" data-toggle="tooltip" data-placement="top" title="You can insert letters, numbers and the '_' (underscore) character">
+          <%= text_field_tag "pages[][id]", nil, class: "form-control col-8", type:"text" , pattern:"^[_\.A-z0-9]{1,}$", required: true%>
+          <a  class="pl-2 col-1" data-toggle="tooltip" data-placement="top" title="You can insert letters, numbers and the '_' (underscore) and '.' characters">
 <%= icon('question-circle-o') %></a>
 
         </div>
