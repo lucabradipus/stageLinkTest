@@ -1,22 +1,34 @@
-$(document).on('click', '.btn-add', function(e)
-{
-  e.preventDefault();
 
-  var currentEntry = $(this).parents('.param_row:last'),
-      newEntry = $(currentEntry.clone()).appendTo('.param_container:last');
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
 
-  newEntry.find('input').val('');
-  newEntry.find('.btn-add')
-      .removeClass('btn-default').addClass('btn-danger')
-      .removeClass('btn-add').addClass('btn-remove')
-      .html('<span aria-hidden="true"></span> Remove   ');
-  $('#fan_collector').validator('update');
+  $(document).on('click', '.btn-add', function (e) {
+    e.preventDefault();
 
-}).on('click', '.btn-remove', function(e)
-{
-  $(this).parents('.param_row:last').remove();
+    var currentEntry = $(this).parents('.param_row:first'),
+        newEntry = $(currentEntry.clone()).appendTo('.param_container');
 
-  e.preventDefault();
-  $('#fan_collector').validator('update');
-  return false;
+    currentEntry.find('.btn-add')
+        .hide();
+    currentEntry.find('.btn-remove')
+        .hide();
+
+    newEntry.find('input').val('');
+    newEntry.find('.btn-remove')
+        .show();
+
+    $('#fan_collector').validator('update');
+    $('[data-toggle="tooltip"]').tooltip();
+
+  }).on('click', '.btn-remove', function (e) {
+    var newLastRow$ = $(this).parents('.param_row:last').prev();
+    $(this).parents('.param_row:last').remove();
+    newLastRow$.find('.btn-add').show();
+    if ($('.param_row').length != 1) {
+      newLastRow$.find('.btn-remove').show();
+    }
+    e.preventDefault();
+    $('#fan_collector').validator('update');
+    return false;
+  });
 });

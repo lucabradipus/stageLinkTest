@@ -21,7 +21,7 @@ The secret key for the facebook app I created to login in facebook and perform t
  But I left it here because this is a test application and it is much easier to test on localhost:3000 in this way    
 
 
-## Know issue
+## Known issues
 * There is no feedback in the page that the query is running or is completed. You see that is completed when
  a CSV file is downloaded
 * feedback on errors is quite naive
