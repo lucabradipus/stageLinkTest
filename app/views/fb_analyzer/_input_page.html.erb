@@ -4,7 +4,7 @@
       <div class="col-5">
         <div class="form-group form-inline has-feedback">
           <label class="control-label col-3">page id:</label>
-          <%= text_field_tag "pages[][id]", nil, class: "form-control col-8", type:"text" , pattern:"^[_\.A-z0-9]{1,}$", required: true%>
+          <%= text_field_tag "pages[][id]", nil, id:"page-0", class: "form-control col-8", type:"text" , pattern:"^[_\.A-z0-9]{1,}$", required: true%>
           <a  class="pl-2 col-1" data-toggle="tooltip" data-placement="top" title="You can insert letters, numbers and the '_' (underscore) and '.' characters">
 <%= icon('question-circle-o') %></a>
 
@@ -13,7 +13,7 @@
       <div class="col-5 ">
         <div class="form-group form-inline has-feedback">
          <label class="control-label col-3">limit:</label>
-          <%= text_field_tag "pages[][limit]", nil, class: "form-control col-8", type:"number", min:"1", max:"100", required: true %>
+          <%= text_field_tag "pages[][limit]", nil, id:"limit-0",class: "form-control col-8", type:"number", min:"1", max:"100", required: true %>
 
           <a  class="pl-2 col-1" data-toggle="tooltip" data-placement="top" title="Must be between 1 and 100">
 <%= icon('question-circle-o') %></a>
