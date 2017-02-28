@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'capybara/poltergeist'
+require 'capybara-screenshot/cucumber'
 
 if ENV['IN_BROWSER']
   # On demand: non-headless tests via Selenium/WebDriver
@@ -37,7 +38,6 @@ OmniAuth.config.add_mock(:facebook, {
     :token => 'fake_token'
   }
 })
-
 
 
 # Capybara defaults to CSS3 selectors rather than XPath.

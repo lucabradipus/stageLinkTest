@@ -57,6 +57,7 @@ group :test do
   gem "selenium-webdriver"
   gem 'launchy'
   gem 'cucumber-rails', :require => false
+  gem 'capybara-screenshot'
 
 end
 
